@@ -1,14 +1,14 @@
 {
     "compilerOptions": {
-        "allowSyntheticDefaultImports": false,
+        "allowSyntheticDefaultImports": true,
         "moduleResolution": "node",
-        "module": "commonjs",
-        "target": "es5",
+        "module": "esnext",
+        "target": "es2015",
         "jsx": "react",
         "strict": true,
         "skipLibCheck": true,
         "sourceMap": true,
-        "lib": ["dom", "esnext", "es6"],
+        "lib": ["dom", "esnext"],
         "types": ["cypress"]
     }
 }

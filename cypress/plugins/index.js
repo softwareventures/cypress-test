@@ -1,4 +1,4 @@
-const wp = require('@cypress/webpack-preprocessor')
+const webpackPreprocessor = require('@cypress/webpack-preprocessor')
 
 // ***********************************************************
 // This example plugins/index.js can be used to load plugins
@@ -14,7 +14,7 @@ const wp = require('@cypress/webpack-preprocessor')
 // the project's config changing)
 
 module.exports = on => {
-  on('file:preprocessor', wp({
+  on('file:preprocessor', webpackPreprocessor({
     webpackOptions: require('../../webpack.config'),
   }))
 }

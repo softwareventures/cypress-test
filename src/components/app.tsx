@@ -1,9 +1,9 @@
-import * as React from "react";
+import React from "react";
 
 export class App extends React.Component {
   render() {
     return (
-      <form>
+      <form id="example-form">
         First name:
         <br />
         <input type="text" name="firstname" />
@@ -11,7 +11,9 @@ export class App extends React.Component {
         Last name:
         <br />
         <input type="text" name="lastname" />
-        <button type="submit">Submit</button>
+        <button type="submit" name="submit">
+          Submit
+        </button>
       </form>
     );
   }
