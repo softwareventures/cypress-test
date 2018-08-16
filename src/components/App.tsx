@@ -2,7 +2,6 @@ import * as React from "react";
 
 export class App extends React.Component {
   render() {
-    console.log("Rendered App");
     return (
       <form id="example-form">
         First name:
