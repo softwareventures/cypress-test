@@ -2,12 +2,14 @@
   "name": "cypress-test",
   "version": "1.0.0",
   "scripts": {
-    "build": "rimraf dist && webpack --mode production",
+    "build": "rimraf dist && webpack",
+    "build:prod": "rimraf dist && webpack --mode production",
     "start": "webpack-dev-server",
+    "start:prod": "webpack-dev-server --mode production",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run --record --key 7d1f54de-2e41-4184-ad00-c734b89e96bb",
     "test:open": "run-p start cypress:open",
-    "test": "run-p --race start cypress:run"
+    "test": "run-p --race start:prod cypress:run"
   },
   "author": "Victor Glindås",
   "license": "ISC",
