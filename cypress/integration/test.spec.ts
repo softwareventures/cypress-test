@@ -4,9 +4,8 @@ describe("example test", function() {
   });
 
   it("runs example test", function() {
-    const form = cy.get("#example-form");
-    form.get("[name=firstname]").type("John");
-    form.get("[name=lastname]").type("Doe");
-    form.get("[name=submit]").click();
+    cy.get("[name=firstname]").type("John");
+    cy.get("[name=lastname]").type("Doe");
+    cy.get("[name=submit]").click();
   });
 });
