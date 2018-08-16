@@ -11,6 +11,7 @@ export class App extends React.Component {
         Last name:
         <br />
         <input type="text" name="lastname" />
+        <br />
         <button type="submit" name="submit">
           Submit
         </button>
