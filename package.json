@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "build:prod": "rimraf dist && webpack --mode production",
-    "build:dev": "rimraf dist && webpack --mode development -w",
+    "build:dev": "rimraf dist && webpack -w",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run --record --key 7d1f54de-2e41-4184-ad00-c734b89e96bb",
     "test:open": "npm run build:dev & npm run cypress:open",

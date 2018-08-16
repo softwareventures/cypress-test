@@ -2,6 +2,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   devtool: "source-map",
+  mode: "development",
   module: {
     rules: [{
       test: /\.tsx?$/,
@@ -10,7 +11,6 @@ module.exports = {
     }]
   },
   optimization: {
-    runtimeChunk: true,
     splitChunks: {
       chunks: "all"
     }
