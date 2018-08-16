@@ -1,6 +1,6 @@
 describe("example test", function() {
   beforeEach(function() {
-    cy.visit("/dist/");
+    cy.visit("/");
   });
 
   it("runs example test", function() {

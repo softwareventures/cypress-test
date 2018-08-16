@@ -3,6 +3,10 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   devtool: "source-map",
   mode: "development",
+  devServer: {
+    host: "0.0.0.0",
+    port: 3000
+  },
   module: {
     rules: [{
       test: /\.tsx?$/,
