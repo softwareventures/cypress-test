@@ -7,9 +7,11 @@
     "start": "webpack-dev-server",
     "start:prod": "webpack-dev-server --mode production",
     "cypress:open": "cypress open",
-    "cypress:run": "cypress run --record --key 7d1f54de-2e41-4184-ad00-c734b89e96bb",
+    "cypress:ci": "cypress run --record --key 7d1f54de-2e41-4184-ad00-c734b89e96bb",
+    "cypress": "cypress run",
     "test:open": "run-p start cypress:open",
-    "test": "run-p --race start:prod cypress:run"
+    "test:ci": "run-p --race start:prod cypress:ci",
+    "test": "run-p --race start:prod cypress"
   },
   "author": "Victor Glindås",
   "license": "ISC",
