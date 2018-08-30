@@ -14,6 +14,11 @@ module.exports = {
       use: "ts-loader"
     }]
   },
+  optimization: {
+    splitChunks: {
+      chunks: "all"
+    }
+  },
   resolve: {
     extensions: [".ts", ".tsx", ".js", "jsx", ".json"]
   },

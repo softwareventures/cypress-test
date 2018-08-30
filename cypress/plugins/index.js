@@ -1,4 +1,7 @@
 const webpackPreprocessor = require('@cypress/webpack-preprocessor')
+const webpackOptions = require('../../webpack.config');
+
+delete webpackOptions.optimization;
 
 // ***********************************************************
 // This example plugins/index.js can be used to load plugins
@@ -15,6 +18,6 @@ const webpackPreprocessor = require('@cypress/webpack-preprocessor')
 
 module.exports = on => {
   on('file:preprocessor', webpackPreprocessor({
-    webpackOptions: require('../../webpack.config'),
+    webpackOptions
   }))
 }
