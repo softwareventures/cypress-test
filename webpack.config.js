@@ -6,10 +6,6 @@ module.exports = {
     host: "0.0.0.0",
     port: 3000
   },
-  externals: {
-    "react": "React",
-    "react-dom": "ReactDOM"
-  },
   mode: "development",
   module: {
     rules: [{
@@ -17,11 +13,6 @@ module.exports = {
       exclude: /node_modules/,
       use: "ts-loader"
     }]
-  },
-  optimization: {
-    splitChunks: {
-      chunks: "all"
-    }
   },
   resolve: {
     extensions: [".ts", ".tsx", ".js", "jsx", ".json"]
