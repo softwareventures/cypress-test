@@ -1,6 +1,6 @@
 import {Component, h} from "preact";
 
-export class App extends Component {
+export class App extends Component<{a: string}> {
   render() {
     return (
       <form id="example-form">
