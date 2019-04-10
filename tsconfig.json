@@ -9,6 +9,6 @@
         "skipLibCheck": true,
         "sourceMap": true,
         "lib": ["dom", "esnext"],
-        "types": ["cypress", "chai", "mocha"]
+        "types": ["cypress", "cypress/types/chai", "cypress/types/mocha"]
     }
 }
