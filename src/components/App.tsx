@@ -1,6 +1,6 @@
-import * as React from "react";
+import {Component, h} from "preact";
 
-export class App extends React.Component {
+export class App extends Component {
   render() {
     return (
       <form id="example-form">
