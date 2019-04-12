@@ -93,7 +93,7 @@ Cypress.Commands.add('copyComponentStyles', (component: preact.ComponentConstruc
  * To access: use an alias or original component reference
  *  @function   cy.mount
  *  @param      {Object}  jsx - component to mount
- *  @param      {string}  [Component] - alias to use later
+ *  @param      {string}  alias [Component] - alias to use later
  *  @example
  ```
  import Hello from './hello.jsx'
@@ -121,7 +121,6 @@ export const mount = (jsx: VNode<any>, alias?: string) => {
         name: 'mount',
         // @ts-ignore
         message: [`preact.render(<${displayname} ... />)`],
-        // message: [`preact.render(<${displayname} ... ${JSON.stringify(jsx.attributes)}/>)`],
         consoleProps () {
           return {
             props: jsx.attributes
@@ -138,7 +137,7 @@ export const mount = (jsx: VNode<any>, alias?: string) => {
         jsx,
         document.getElementById('cypress-jsdom')
       );
-      cy.wrap(component, { log: false }).as(displayname)
+      cy.wrap(component._component, { log: false }).as(displayname)
     });
   cy.copyComponentStyles(jsx)
     .then(() => {
@@ -149,25 +148,26 @@ export const mount = (jsx: VNode<any>, alias?: string) => {
 Cypress.Commands.add('mount', mount);
 
 /** Get one or more DOM elements by selector or alias.
-    Features extended support for JSX and React.Component
+ Features extended support for JSX and preact.Component
     @function   cy.get
     @param      {string|object|function}  selector
     @param      {object}                  options
     @example    cy.get('@Component')
     @example    cy.get(<Component />)
     @example    cy.get(Component)
-**/
-Cypress.Commands.overwrite('get', (originalFn, selector, options) => {
+ **/
+Cypress.Commands.overwrite('get', (originalFn, selector, options) => { // FIXME: All the above examples fail!
     switch (typeof selector) {
       case 'object':
         // If attempting to use JSX as a selector, reference the displayname
         if (
-            selector.$$typeof &&
-            selector.$$typeof.toString().startsWith('Symbol(react')
+          selector.nodeName !== undefined
         ) {
-          const displayname = selector.type.prototype.constructor.name;
+          const displayname = selector.nodeName.prototype.constructor.name;
           return originalFn(`@${displayname}`, options)
         }
+        // prevent fallthru
+        throw new Error("selector: " + JSON.stringify(selector));
       case 'function':
         // If attempting to use the component name without JSX (testing in .js/.ts files)
         const displayname = selector.prototype.constructor.name;
@@ -191,7 +191,7 @@ before(() => {
     {
       name: 'preact',
       type: 'file',
-      location: settings.preact || 'node_modules/preact/dist/preact.js'
+      location: settings.preact || 'node_modules/preact/dist/preact.dev.js' // TODO: setState does not trigger render unless .dev
     }
   ];
 
